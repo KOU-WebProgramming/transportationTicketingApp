@@ -4,25 +4,18 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
-using Transport.API.Services;
-using Transport.Data.Mongo.Configurations;
-using Transport.Data.Mongo.Extensions;
-using Transport.Entities;
 using TransportTicketApp.API.Services;
+using TransportTicketApp.Data.Mongo.Configurations;
+using TransportTicketApp.Data.Mongo.Extensions;
 using TransportTicketApp.Entities;
 
-namespace Transport.API
+namespace TransportTicketApp.API
 {
     public class Program
     {
         public static void Main(string[] args)
         {
             var builder = WebApplication.CreateBuilder(args);
-            builder.Services.AddIdentity<ApplicationUser, ApplicationRole>()
-       .AddMongoDbStores<ApplicationUser, ApplicationRole, Guid>(
-           conStr,
-           dbName)
-       .AddDefaultTokenProviders();
 
 
 
@@ -54,6 +47,7 @@ namespace Transport.API
                 options.Password.RequiredLength = 6;
             });
 
+
             builder.Services.AddAuthorization(options =>
             {
                 options.AddPolicy("AdminOnly", policy => policy.RequireRole("Admin"));
@@ -67,13 +61,6 @@ namespace Transport.API
                            .AllowAnyMethod()
                            .AllowAnyHeader();
                 });
-            });
-            builder.Services.AddDistributedMemoryCache();
-            builder.Services.AddSession(options =>
-            {
-                options.Cookie.HttpOnly = true;
-                options.Cookie.IsEssential = true;
-                options.IdleTimeout = TimeSpan.FromMinutes(30);
             });
 
             builder.Services.AddDistributedMemoryCache();

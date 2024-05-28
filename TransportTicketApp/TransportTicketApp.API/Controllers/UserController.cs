@@ -1,8 +1,8 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using Transport.API.Services;
-using Transport.Entities;
+using TransportTicketApp.API.Services;
+using TransportTicketApp.Entities;
 
-namespace Transport.API.Controllers
+namespace TransportTicketApp.API.Controllers
 {
     [Route("users")]
     public class UserController : Controller

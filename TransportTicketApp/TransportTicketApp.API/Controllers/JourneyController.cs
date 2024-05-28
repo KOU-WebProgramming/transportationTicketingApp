@@ -1,11 +1,11 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
-using Transport.API.Models;
-using Transport.API.Services;
-using Transport.Entities;
+using TransportTicketApp.API.Models;
+using TransportTicketApp.API.Services;
+using TransportTicketApp.Entities;
 
-namespace Transport.API.Controllers
+namespace TransportTicketApp.API.Controllers
 {
     [Route("journeys")]
     [Authorize]

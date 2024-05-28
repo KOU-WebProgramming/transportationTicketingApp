@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace Transport.API.Models
+namespace TransportTicketApp.API.Models
 {
     public class JourneyViewModel
     {

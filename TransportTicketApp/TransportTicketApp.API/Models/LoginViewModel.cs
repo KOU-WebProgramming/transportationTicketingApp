@@ -1,4 +1,4 @@
-﻿namespace Transport.API.Models
+﻿namespace TransportTicketApp.API.Models
 {
     public class LoginViewModel
     {

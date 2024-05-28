@@ -1,7 +1,7 @@
 ﻿using Microsoft.Azure.CognitiveServices.Language.LUIS.Runtime;
 using Microsoft.Azure.CognitiveServices.Language.LUIS.Runtime.Models;
 
-namespace Transport.API.Services
+namespace TransportTicketApp.API.Services
 {
     public interface ILuisService
     {

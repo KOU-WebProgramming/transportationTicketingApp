@@ -5,11 +5,13 @@ VisualStudioVersion = 17.10.34916.146
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TransportTicketApp.API", "TransportTicketApp.API\TransportTicketApp.API.csproj", "{E90DA740-637B-4FD2-B46C-17FD1BF45EB5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TransportTicketApp.Entities", "TransportTicketApp.Entities\TransportTicketApp.Entities.csproj", "{94F356BC-9594-41FB-9EAB-6FB8451E3DA9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TransportTicketApp.Entities", "TransportTicketApp.Entities\TransportTicketApp.Entities.csproj", "{94F356BC-9594-41FB-9EAB-6FB8451E3DA9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TransportTicketApp.Data", "TransportTicketApp.Data\TransportTicketApp.Data.csproj", "{E4289596-188F-4846-912B-9EB881061422}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TransportTicketApp.Data", "TransportTicketApp.Data\TransportTicketApp.Data.csproj", "{E4289596-188F-4846-912B-9EB881061422}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TransportTicketApp.Data.Mongo", "TransportTicketApp.Data.Mongo\TransportTicketApp.Data.Mongo.csproj", "{AFD16BD3-5478-459E-AC8A-7096AF3A4CE0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TransportTicketApp.Data.Mongo", "TransportTicketApp.Data.Mongo\TransportTicketApp.Data.Mongo.csproj", "{AFD16BD3-5478-459E-AC8A-7096AF3A4CE0}"
+EndProject
+Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{AC51D126-8A4F-4E2F-A406-353A76DAA928}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +35,10 @@ Global
 		{AFD16BD3-5478-459E-AC8A-7096AF3A4CE0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AFD16BD3-5478-459E-AC8A-7096AF3A4CE0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AFD16BD3-5478-459E-AC8A-7096AF3A4CE0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AC51D126-8A4F-4E2F-A406-353A76DAA928}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AC51D126-8A4F-4E2F-A406-353A76DAA928}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AC51D126-8A4F-4E2F-A406-353A76DAA928}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AC51D126-8A4F-4E2F-A406-353A76DAA928}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

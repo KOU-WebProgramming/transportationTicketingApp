@@ -1,8 +1,8 @@
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
-using Transport.API.Models;
+using TransportTicketApp.API.Models;
 
-namespace Transport.API.Controllers
+namespace TransportTicketApp.API.Controllers
 {
     public class HomeController : Controller
     {

@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
-namespace Transport.API.Controllers
+namespace TransportTicketApp.API.Controllers
 {
     [Route("admin")]
     [Authorize(Policy = "AdminOnly")]

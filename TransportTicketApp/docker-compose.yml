@@ -1,0 +1,38 @@
+version: '3.8'
+name: transportapp
+services:
+  transport.api:
+    image: ${DOCKER_REGISTRY-}transportapi
+    container_name: transportapi
+    environment:
+      - SERVICE_8080_NAME=transportapi
+    build:
+      context: .
+      dockerfile: TransportTicketApp.API/Dockerfile
+    networks:
+      - obilet
+    depends_on:
+     - mongo
+
+  mongo:
+    image: mongo:latest
+    container_name: mongodb
+    environment:
+      - SERVICE_27017_NAME=mongodb
+    ports:
+      - "27017:27017"
+    networks:
+      - obilet
+    volumes:
+      - ${TRANSPORT_DATA}/mongoDb/data:/data/db
+    
+
+
+
+      
+networks:
+  obilet:
+   name: obilet
+   driver: bridge
+
+

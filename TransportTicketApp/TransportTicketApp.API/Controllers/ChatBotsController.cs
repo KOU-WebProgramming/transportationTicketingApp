@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using Transport.API.Services;
+using TransportTicketApp.API.Services;
 
-namespace Transport.API.Controllers
+namespace TransportTicketApp.API.Controllers
 {
     [Route("api/chatbot")]
     [ApiController]
