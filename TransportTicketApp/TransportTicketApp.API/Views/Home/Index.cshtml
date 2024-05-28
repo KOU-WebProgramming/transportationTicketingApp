@@ -2,7 +2,175 @@
     ViewData["Title"] = "Home Page";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+<div class="main-banner">
+    <h1>Türkiye'nin Güvenilir Seyehat Uygulaması</h1>
 </div>
+
+<div class="ticket-form">
+    <form id="ticketForm">
+        <div class="form-group">
+            <label for="origin">Nereden:</label>
+            <select id="origin" name="origin">
+                <option value="İstanbul">İstanbul</option>
+                <option value="Ankara">Ankara</option>
+                <option value="İzmir">İzmir</option>
+                <option value="Antalya">Antalya</option>
+                <option value="Bursa">Bursa</option>
+                <!-- Diğer şehirler eklenebilir -->
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label for="destination">Nereye:</label>
+            <select id="destination" name="destination">
+                <option value="İstanbul">İstanbul</option>
+                <option value="Ankara">Ankara</option>
+                <option value="İzmir">İzmir</option>
+                <option value="Antalya">Antalya</option>
+                <option value="Bursa">Bursa</option>
+                <!-- Diğer şehirler eklenebilir -->
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label for="date">Tarih:</label>
+            <input type="date" id="date" name="date">
+        </div>
+
+        <button type="submit">Otobüs Ara</button>
+    </form>
+</div>
+
+<div id="resultContainer"></div>
+
+<style>
+    .main-banner {
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+    }
+
+    .ticket-form {
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+        background-color: #f8f9fa;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    }
+
+    .form-group {
+        display: flex;
+        flex-direction: column;
+        align-items: start;
+        margin-right: 20px; /* Aralarına boşluk bırakmak için */
+    }
+
+    .ticket-form form {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+    }
+
+    label {
+        font-weight: bold;
+        margin-bottom: 5px;
+    }
+
+    select, input[type="date"] {
+        padding: 8px;
+        width: 200px;
+        border: 2px solid #ccc;
+        border-radius: 4px;
+    }
+
+    button {
+        padding: 10px 20px;
+        font-size: 16px;
+        background-color: #3cb371;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s;
+        margin-top: 25px;
+        font-weight: bold;
+    }
+
+        button:hover {
+            background-color: #006400;
+        }
+
+    .result-box {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background-color: #ffffff;
+        border: 2px solid #3cb371;
+        border-radius: 5px;
+        padding: 10px;
+        margin: 10px 0;
+        text-align: center;
+        font-size: 18px;
+        font-weight: bold;
+    }
+
+        .result-box span {
+            flex-grow: 1;
+            text-align: left;
+        }
+
+        .result-box button {
+            padding: 5px 10px;
+            font-size: 14px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            margin-left: 10px;
+        }
+
+            .result-box button:hover {
+                background-color: #0056b3;
+            }
+
+    #resultContainer {
+        margin-top: 20px;
+        padding: 20px;
+        background-color: #f1f1f1;
+        border-radius: 8px;
+    }
+</style>
+
+<script>
+    document.getElementById('ticketForm').addEventListener('submit', function (event) {
+        event.preventDefault(); // Formun normal submit işlemini durdur
+
+        const origin = document.getElementById('origin').value;
+        const destination = document.getElementById('destination').value;
+
+        const resultContainer = document.getElementById('resultContainer');
+        resultContainer.innerHTML = ''; // Önceki sonuçları temizle
+
+        const hours = [];
+        while (hours.length < 10) {
+            let hour = Math.floor(Math.random() * 24);
+            let minute = Math.floor(Math.random() * 60);
+            let time = `${hour.toString().padStart(2, '0')}:${minute.toString().padStart(2, '0')}`;
+            if (!hours.includes(time)) {
+                hours.push(time);
+            }
+        }
+
+        for (let i = 0; i < 10; i++) {
+            const randomPrice = Math.floor(Math.random() * 501) + 500; // 500 ile 1000 arasında rastgele bir sayı
+            const resultBox = document.createElement('div');
+            resultBox.className = 'result-box';
+            resultBox.innerHTML = `<span>${origin} - ${destination}: ${hours[i]} - ${randomPrice} TL</span><button>Seç</button>`;
+            resultContainer.appendChild(resultBox);
+        }
+    });
+</script>

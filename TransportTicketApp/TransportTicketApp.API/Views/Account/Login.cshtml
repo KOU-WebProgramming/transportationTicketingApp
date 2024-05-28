@@ -1,0 +1,100 @@
+﻿@model LoginViewModel
+
+@{
+    ViewData["Title"] = "Login";
+}
+
+<h1>Login</h1>
+
+<form id="loginForm">
+    <div class="form-group">
+        <label asp-for="Email"></label>
+        <input asp-for="Email" class="form-control" />
+        <span asp-validation-for="Email" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Password"></label>
+        <input asp-for="Password" type="password" class="form-control" />
+        <span asp-validation-for="Password" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <input asp-for="RememberMe" />
+        <label asp-for="RememberMe">Remember me?</label>
+    </div>
+    <button type="button" class="btn btn-primary" onclick="submitForm()">Login</button>
+</form>
+
+@* 
+<form asp-controller="Account" asp-action="Login" id="formAuthentication" class="mb-3" method="post">
+    <div asp-validation-summary="All"></div>
+    <div class="mb-3">
+        <label asp-for="Email" class="form-label">Email</label>
+        <input asp-for="Email" type="email" class="form-control" id="email" name="email" placeholder="Enter your email " autofocus>
+        <span asp-validation-for="Email"></span>
+    </div>
+    <div class="mb-3 form-password-toggle">
+        <div class="d-flex justify-content-between">
+            <label class="form-label" for="password">Password</label>
+            <a href="auth-forgot-password-basic.html">
+                <small>Forgot Password?</small>
+            </a>
+        </div>
+        <div class="input-group input-group-merge">
+            <input asp-for="Email" type="password" id="password" class="form-control" name="password" placeholder="&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;" aria-describedby="password" />
+            <span class="input-group-text cursor-pointer"><i class="bx bx-hide"></i></span>
+            <span asp-validation-for="Password"></span>
+        </div>
+    </div>
+    <div class="mb-3">
+        <div class="form-check">
+            <input asp-for="RememberMe" class="form-check-input" type="checkbox" id="remember-me">
+            <label asp-for="RememberMe" class="form-check-label" for="remember-me">
+                Remember Me
+            </label>
+        </div>
+    </div>
+    <div class="mb-3">
+        <button type="button" class="btn btn-primary" onclick="submitForm()">Login</button>
+
+    </div>
+</form>
+
+<p class="text-center">
+    <span>New on our platform?</span>
+    <a href="auth-register-basic.html">
+        <span>Create an account</span>
+    </a>
+</p>
+ *@
+
+<script>
+    function submitForm() {
+        const form = document.getElementById('loginForm');
+        const formData = new FormData(form);
+
+        const data = {
+            Email: formData.get('Email'),
+            Password: formData.get('Password'),
+            RememberMe: formData.get('RememberMe') === 'on'
+        };
+
+        fetch('/account/login', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(data)
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.success) {
+                window.location.href = '/home/index';
+            } else {
+                alert('Login failed');
+            }
+        })
+        .catch(error => {
+            console.error('Error:', error);
+        });
+    }
+</script>

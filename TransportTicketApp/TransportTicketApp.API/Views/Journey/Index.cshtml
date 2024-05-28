@@ -1,0 +1,66 @@
+﻿@model IEnumerable<Journey>
+
+@{
+    ViewData["Title"] = "Journeys";
+}
+
+<h1>Journeys</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>From</th>
+            <th>To</th>
+            <th>Departure Time</th>
+            <th>Arrival Time</th>
+            <th>Price</th>
+            <th>Bus Company</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var journey in Model)
+        {
+            <tr>
+                <td>@journey.From</td>
+                <td>@journey.To</td>
+                <td>@journey.DepartureTime</td>
+                <td>@journey.ArrivalTime</td>
+                <td>@journey.Price</td>
+                <td>@journey.BusCompany</td>
+                <td>
+                    <!-- Burada rezervasyon işlemi yapılabilir -->
+                    <button class="btn btn-primary" onclick="reserveSeat('@journey.Id')">Reserve Seat</button>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+    <script>
+        function reserveSeat(journeyId) {
+            const seatNumber = prompt("Enter seat number:");
+
+            fetch('/journeys/reserve', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ journeyId: journeyId, seatNumber: seatNumber })
+            })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                        alert("Seat reserved successfully!");
+                    } else {
+                        alert("Failed to reserve seat: " + data.message);
+                    }
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                });
+        }
+    </script>
+}

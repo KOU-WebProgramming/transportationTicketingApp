@@ -1,0 +1,34 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Welcome</h1>
+    <p>Ask something to our chatbot!</p>
+    <input type="text" id="chatbotQuery" placeholder="Sorununuzu buraya yazınız?" />
+    <button onclick="sendQuery()">Sor</button>
+    <div id="chatbotResponse"></div>
+</div>
+
+@section Scripts {
+    <script>
+        function sendQuery() {
+            const query = document.getElementById('chatbotQuery').value;
+
+            fetch('/api/chatbot/query', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ text: query })
+            })
+                .then(response => response.json())
+                .then(data => {
+                    document.getElementById('chatbotResponse').innerText = JSON.stringify(data);
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                });
+        }
+    </script>
+}
