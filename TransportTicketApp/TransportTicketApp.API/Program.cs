@@ -17,6 +17,11 @@ namespace Transport.API
         public static void Main(string[] args)
         {
             var builder = WebApplication.CreateBuilder(args);
+            builder.Services.AddIdentity<ApplicationUser, ApplicationRole>()
+       .AddMongoDbStores<ApplicationUser, ApplicationRole, Guid>(
+           conStr,
+           dbName)
+       .AddDefaultTokenProviders();
 
 
 
@@ -47,7 +52,6 @@ namespace Transport.API
                 options.Password.RequireNonAlphanumeric = false;
                 options.Password.RequiredLength = 6;
             });
-
 
             builder.Services.AddAuthorization(options =>
             {

@@ -6,4 +6,19 @@
     <ImplicitUsings>enable</ImplicitUsings>
   </PropertyGroup>
 
+	
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="8.0.5" />
+    <PackageReference Include="Microsoft.Azure.CognitiveServices.Language.LUIS.Runtime" Version="3.1.0-preview.1" />
+    <PackageReference Include="Microsoft.IdentityModel.Tokens" Version="7.6.0" />
+    <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.19.6" />
+    <PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="7.6.0" />
+  </ItemGroup>
+
+	
+	<ItemGroup>
+    <ProjectReference Include="..\TransportTicketApp.Data.Mongo\TransportTicketApp.Data.Mongo.csproj" />
+    <ProjectReference Include="..\TransportTicketApp.Entities\TransportTicketApp.Entities.csproj" />
+  </ItemGroup>
+
 </Project>
