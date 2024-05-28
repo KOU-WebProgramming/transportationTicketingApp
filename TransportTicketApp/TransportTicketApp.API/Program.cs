@@ -9,6 +9,7 @@ using Transport.Data.Mongo.Configurations;
 using Transport.Data.Mongo.Extensions;
 using Transport.Entities;
 using TransportTicketApp.API.Services;
+using TransportTicketApp.Entities;
 
 namespace Transport.API
 {
@@ -66,6 +67,13 @@ namespace Transport.API
                            .AllowAnyMethod()
                            .AllowAnyHeader();
                 });
+            });
+            builder.Services.AddDistributedMemoryCache();
+            builder.Services.AddSession(options =>
+            {
+                options.Cookie.HttpOnly = true;
+                options.Cookie.IsEssential = true;
+                options.IdleTimeout = TimeSpan.FromMinutes(30);
             });
 
             builder.Services.AddDistributedMemoryCache();
