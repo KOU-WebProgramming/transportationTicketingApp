@@ -1,4 +1,8 @@
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.IdentityModel.Tokens;
+using System.Text;
 using TransportTicketApp.API.Services;
+using TransportTicketApp.Entities;
 
 namespace TransportTicketApp.API
 {
@@ -35,6 +39,13 @@ namespace TransportTicketApp.API
                            .AllowAnyMethod()
                            .AllowAnyHeader();
                 });
+            });
+            builder.Services.AddDistributedMemoryCache();
+            builder.Services.AddSession(options =>
+            {
+                options.Cookie.HttpOnly = true;
+                options.Cookie.IsEssential = true;
+                options.IdleTimeout = TimeSpan.FromMinutes(30);
             });
 
             builder.Services.AddAuthentication(options =>
