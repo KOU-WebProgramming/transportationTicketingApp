@@ -6,4 +6,20 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <PackageReference Include="MongoDB.Driver" Version="2.25.0" />
+  </ItemGroup>
+
+	<ItemGroup>
+		<PackageReference Include="AspNetCore.Identity.MongoDbCore" Version="3.1.2" />
+		<PackageReference Include="MongoDB.Driver" Version="2.25.0" />
+	</ItemGroup>
+
+
+	
+  <ItemGroup>
+    <ProjectReference Include="..\TransportTicketApp.Data.Mongo\TransportTicketApp.Data.Mongo.csproj" />
+    <ProjectReference Include="..\TransportTicketApp.Data\TransportTicketApp.Data.csproj" />
+  </ItemGroup>
+
 </Project>
